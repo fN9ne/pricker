@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 html, body {
   font-family: "Montserrat";
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
 }
 
 * {
@@ -25,6 +27,8 @@ html, body {
       -ms-flex-align: center;
           align-items: center;
   padding: 50px;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: contain;
 }
 
 @-webkit-keyframes slide {
