@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+html, body {
+	font-family: 'Montserrat';
+}
+* {
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-tap-highlight-color: transparent;
+}
+.wrapper {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+}
+@keyframes slide {
+	to {
+		opacity: 0;
+		transform: translate(-75%, -75%) translate(0, -100px);
+	}
+}
+.enemy {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	&__image {
+		width: 230px;
+		height: 230px;
+		object-fit: cover;
+	}
+	&__name {
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 28px;
+		margin: 0 0 20px 0;
+	}
+	&__level {
+		font-family: monospace;
+		font-size: 12px;
+		margin: 0 0 5px 0;
+		span {
+			font-weight: 700;
+		}
+	}
+	&__damage {
+		position: absolute;
+		z-index: 1;
+		transform: translate(-75%, -75%);
+		font-family: monospace;
+		color: rgb(225, 48, 48);
+		font-size: 36px;
+		opacity: 0.8;
+		font-weight: 700;
+		animation: slide 450ms ease forwards;
+		pointer-events: none;
+	}
+	button {
+		background: 0;
+		transition: 250ms;
+		position: relative;
+		border-radius: 25%;
+		overflow: hidden;
+		user-select: none;
+		&::before {
+			content: '';
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: red;
+			opacity: 0;
+			transition: 250ms 50ms;
+		}
+		&:hover {
+			opacity: 0.8;
+			cursor: pointer;
+		}
+		&:active {
+			transform: scale(0.95);
+			&::before {
+				opacity: 0.4;
+				transition: 250ms;
+			}
+		}
+	}
+}
+.health {
+	margin: 0 0 25px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&__counter {
+		font-weight: 500;
+		display: inline-flex;
+		gap: 2px;
+		font-size: 16px;
+		margin: 0 0 5px 0;
+	}
+	&__current,
+	&__max {}
+	&__current {}
+	&__max {}
+	&__bar {
+		width: 120px;
+		background: lightgray;
+		border: 1px solid #000;
+		height: 14px;
+		position: relative;
+		span {
+			width: 100%;
+			height: 100%;
+			background: rgb(225, 48, 48);
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: 250ms 10ms linear;
+		}
+	}
+}
+.setlevel {
+	position: fixed;
+	right: 30px;
+	top: 20px;
+	display: flex;
+	flex-direction: column;
+	&__main {
+		display: flex;
+	}
+	&__buttons {
+		display: flex;
+		margin: 8px 0 0 0;
+		button {
+			flex: 0 0 50%;
+			height: 24px;
+			&:first-of-type {
+				border-left: 1px solid #d9d9d9;
+			}
+		}
+	}
+	&::before {
+		content: 'Level:';
+		position: absolute;
+		left: 0;
+		top: 0;
+		background: #f2f2f2;
+		height: 29px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 58px;
+		border: 1px solid #d9d9d9;
+	}
+	button {
+		padding: 0 8px;
+		text-transform: uppercase;
+		font-size: 12px;
+		font-weight: 600;
+		border: 1px solid #d9d9d9;
+		border-left: 0;
+		transition: 250ms;
+		&:hover {
+			background: #d9d9d9;
+		}
+	}
+	input {
+		border: 1px solid #d9d9d9;
+		padding: 5px 8px 5px 66px;
+		text-align: right;
+		width: 100px;
+		font-family: monospace;
+		font-weight: 700;
+	}
+}
+.info {
+	position: fixed;
+	left: 10px;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+.loot {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 16px;
+	font-weight: 500;
+	font-family: monospace;
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+	&__a {}
+	&__b {}
+	&__c {}
+	&__d {}
+}
+@media (max-width: 768px) {
+	.info {
+		top: 20px;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+	.loot {
+		flex-direction: row;
+		&__item {
+			flex-direction: column;
+		}
+	}
+}
