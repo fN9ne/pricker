@@ -1,0 +1,299 @@
+@-webkit-keyframes slide {
+  to {
+    opacity: 0;
+    -webkit-transform: translate(-75%, -75%) translate(0, -100px);
+            transform: translate(-75%, -75%) translate(0, -100px);
+  }
+}
+@keyframes slide {
+  to {
+    opacity: 0;
+    -webkit-transform: translate(-75%, -75%) translate(0, -100px);
+            transform: translate(-75%, -75%) translate(0, -100px);
+  }
+}
+@-webkit-keyframes slide2 {
+  to {
+    opacity: 0;
+    -webkit-transform: translate(0, -100px);
+            transform: translate(0, -100px);
+  }
+}
+@keyframes slide2 {
+  to {
+    opacity: 0;
+    -webkit-transform: translate(0, -100px);
+            transform: translate(0, -100px);
+  }
+}
+.enemy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.enemy__regen {
+  font-weight: 900;
+  font-size: 32px;
+  color: rgb(87, 215, 58);
+  position: absolute;
+  left: -5px;
+  bottom: 20px;
+  -webkit-animation: slide2 500ms linear forwards;
+          animation: slide2 500ms linear forwards;
+}
+.enemy__regen::before {
+  content: "+";
+}
+.enemy__boss {
+  letter-spacing: 5px;
+  margin: 10px 0 5px 0;
+  font-weight: 900;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  position: relative;
+  display: none;
+}
+.enemy__boss::before, .enemy__boss::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  background: #000;
+  position: absolute;
+}
+.enemy__boss::before {
+  right: 120%;
+}
+.enemy__boss::after {
+  left: 120%;
+}
+.enemy__boss_active {
+  display: block;
+}
+.enemy__image {
+  width: 230px;
+  height: 230px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.enemy__name {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 28px;
+  margin: 0 0 20px 0;
+}
+.enemy__level {
+  font-family: monospace;
+  font-size: 12px;
+  margin: 0 0 5px 0;
+}
+.enemy__level span {
+  font-weight: 700;
+}
+.enemy__damage {
+  position: absolute;
+  z-index: 1;
+  -webkit-transform: translate(-75%, -75%);
+      -ms-transform: translate(-75%, -75%);
+          transform: translate(-75%, -75%);
+  font-family: monospace;
+  color: rgb(225, 48, 48);
+  font-size: 36px;
+  opacity: 0.8;
+  font-weight: 700;
+  -webkit-animation: slide 450ms ease forwards;
+          animation: slide 450ms ease forwards;
+  pointer-events: none;
+}
+.enemy button {
+  background: 0;
+  -webkit-transition: 250ms;
+  -o-transition: 250ms;
+  transition: 250ms;
+  position: relative;
+  border-radius: 25%;
+  overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.enemy button::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: red;
+  opacity: 0;
+  -webkit-transition: 250ms 50ms;
+  -o-transition: 250ms 50ms;
+  transition: 250ms 50ms;
+}
+.enemy button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.enemy button:active {
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
+}
+.enemy button:active::before {
+  opacity: 0.4;
+  -webkit-transition: 250ms;
+  -o-transition: 250ms;
+  transition: 250ms;
+}
+
+.health {
+  margin: 0 0 25px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.health__counter {
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 2px;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+.health__bar {
+  width: 120px;
+  background: lightgray;
+  border: 1px solid #000;
+  height: 14px;
+  position: relative;
+}
+.health__bar span {
+  width: 100%;
+  height: 100%;
+  background: rgb(225, 48, 48);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transition: 250ms 10ms linear;
+  -o-transition: 250ms 10ms linear;
+  transition: 250ms 10ms linear;
+}
+
+.admin-panel {
+  position: fixed;
+  right: 30px;
+  top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.clear-data {
+  margin: 5px 0 0 0;
+  border: 1px solid #d9d9d9;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  height: 24px;
+  -webkit-transition: 250ms;
+  -o-transition: 250ms;
+  transition: 250ms;
+}
+.clear-data:hover {
+  background: #d9d9d9;
+}
+
+.setlevel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.setlevel__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.setlevel__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 8px 0 0 0;
+}
+.setlevel__buttons button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  height: 24px;
+}
+.setlevel__buttons button:first-of-type {
+  border-left: 1px solid #d9d9d9;
+}
+.setlevel::before {
+  content: "Level:";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #f2f2f2;
+  height: 29px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 58px;
+  border: 1px solid #d9d9d9;
+}
+.setlevel button {
+  padding: 0 8px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #d9d9d9;
+  border-left: 0;
+  -webkit-transition: 250ms;
+  -o-transition: 250ms;
+  transition: 250ms;
+}
+.setlevel button:hover {
+  background: #d9d9d9;
+}
+.setlevel input {
+  border: 1px solid #d9d9d9;
+  padding: 5px 8px 5px 66px;
+  text-align: right;
+  width: 100px;
+  font-family: monospace;
+  font-weight: 700;
+}

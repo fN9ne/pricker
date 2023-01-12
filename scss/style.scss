@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap');
 html, body {
 	font-family: 'Montserrat';
 	overscroll-behavior: contain;
@@ -17,172 +17,6 @@ html, body {
 	padding: 50px;
 	overscroll-behavior: contain;
 }
-@keyframes slide {
-	to {
-		opacity: 0;
-		transform: translate(-75%, -75%) translate(0, -100px);
-	}
-}
-.enemy {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	&__image {
-		width: 230px;
-		height: 230px;
-		object-fit: cover;
-	}
-	&__name {
-		font-weight: 700;
-		text-transform: uppercase;
-		font-size: 28px;
-		margin: 0 0 20px 0;
-	}
-	&__level {
-		font-family: monospace;
-		font-size: 12px;
-		margin: 0 0 5px 0;
-		span {
-			font-weight: 700;
-		}
-	}
-	&__damage {
-		position: absolute;
-		z-index: 1;
-		transform: translate(-75%, -75%);
-		font-family: monospace;
-		color: rgb(225, 48, 48);
-		font-size: 36px;
-		opacity: 0.8;
-		font-weight: 700;
-		animation: slide 450ms ease forwards;
-		pointer-events: none;
-	}
-	button {
-		background: 0;
-		transition: 250ms;
-		position: relative;
-		border-radius: 25%;
-		overflow: hidden;
-		user-select: none;
-		&::before {
-			content: '';
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			background: red;
-			opacity: 0;
-			transition: 250ms 50ms;
-		}
-		&:hover {
-			opacity: 0.8;
-			cursor: pointer;
-		}
-		&:active {
-			transform: scale(0.95);
-			&::before {
-				opacity: 0.4;
-				transition: 250ms;
-			}
-		}
-	}
-}
-.health {
-	margin: 0 0 25px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	&__counter {
-		font-weight: 500;
-		display: inline-flex;
-		gap: 2px;
-		font-size: 16px;
-		margin: 0 0 5px 0;
-	}
-	&__current,
-	&__max {}
-	&__current {}
-	&__max {}
-	&__bar {
-		width: 120px;
-		background: lightgray;
-		border: 1px solid #000;
-		height: 14px;
-		position: relative;
-		span {
-			width: 100%;
-			height: 100%;
-			background: rgb(225, 48, 48);
-			position: absolute;
-			top: 0;
-			left: 0;
-			transition: 250ms 10ms linear;
-		}
-	}
-}
-.setlevel {
-	position: fixed;
-	right: 30px;
-	top: 20px;
-	display: flex;
-	flex-direction: column;
-	&__main {
-		display: flex;
-	}
-	&__buttons {
-		display: flex;
-		margin: 8px 0 0 0;
-		button {
-			flex: 0 0 50%;
-			height: 24px;
-			&:first-of-type {
-				border-left: 1px solid #d9d9d9;
-			}
-		}
-	}
-	&::before {
-		content: 'Level:';
-		position: absolute;
-		left: 0;
-		top: 0;
-		background: #f2f2f2;
-		height: 29px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 58px;
-		border: 1px solid #d9d9d9;
-	}
-	button {
-		padding: 0 8px;
-		text-transform: uppercase;
-		font-size: 12px;
-		font-weight: 600;
-		border: 1px solid #d9d9d9;
-		border-left: 0;
-		transition: 250ms;
-		&:hover {
-			background: #d9d9d9;
-		}
-	}
-	input {
-		border: 1px solid #d9d9d9;
-		padding: 5px 8px 5px 66px;
-		text-align: right;
-		width: 100px;
-		font-family: monospace;
-		font-weight: 700;
-	}
-}
-.info {
-	position: fixed;
-	left: 10px;
-	top: 50%;
-	transform: translate(0, -50%);
-}
 .loot {
 	display: flex;
 	flex-direction: column;
@@ -190,6 +24,10 @@ html, body {
 	font-size: 16px;
 	font-weight: 500;
 	font-family: monospace;
+	position: fixed;
+	left: 10px;
+	top: 50%;
+	transform: translate(0, -50%);
 	&__item {
 		display: flex;
 		align-items: center;
@@ -200,16 +38,115 @@ html, body {
 	&__c {}
 	&__d {}
 }
+.header {
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+.nav {
+	&__list {
+		display: flex;
+	}
+	&__item {}
+	&__link {
+		display: inline-block;
+		font-weight: 600;
+		color: #222;
+		padding: 8px 10px;
+		transition: 250ms;
+		&:hover {
+			background: #eee;
+		}
+	}
+}
+.info {
+	position: fixed;
+	left: 10px;
+	bottom: 35px;
+	font-family: monospace;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	&__item {
+		display: flex;
+	}
+	&__prop {
+		width: 125px;
+	}
+	&__value {
+		flex: 1 1 auto;
+		text-align: center;
+		font-weight: 700;
+	}
+}
+.version {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+	font-family: monospace;
+}
 @media (max-width: 768px) {
-	.info {
-		top: 20px;
-		left: 50%;
-		transform: translate(-50%, 0);
+	.version {
+		font-size: 12px;
+		left: 5px;
+		bottom: 5px;
+	}
+	.wrapper {
+		padding: 10px;
 	}
 	.loot {
 		flex-direction: row;
+		top: 50px;
+		left: 50%;
+		transform: translate(-50%, 0);
 		&__item {
+			gap: 0px;
 			flex-direction: column;
+			img {
+				width: 24px;
+			}
 		}
+	}
+	.nav {
+		display: flex;
+		&__list {
+			gap: 10px;
+		}
+		&__link {
+			font-size: 12px;
+			background: #eee;
+			border: 1px solid #d9d9d9;
+		}
+	}
+	.enemy {
+		&__level {
+			margin: 0;
+		}
+		&__boss {
+			font-size: 16px;
+		}
+		&__name {
+			font-size: 20px;
+			margin: 0 0 10px 0;
+		}
+		&__image {
+			width: 180px;
+			height: 180px;
+		}
+	}
+	.health {
+		margin: 0 0 15px 0;
+		&__counter {
+			font-size: 14px;
+		}
+	}
+	.info {
+		left: auto;
+		bottom: 5px;
+		right: 5px;
+		gap: 0px;
+		font-size: 12px;
+		width: 120px;
 	}
 }
